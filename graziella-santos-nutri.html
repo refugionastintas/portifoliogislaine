@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graziella Santos · Nutricionista</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@300;400;500;600;700&family=Editoria+New:ital,wght@0,400;1,400&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg: #f7f3ee;
+  --plum: #5a3a5a;
+  --plum-light: #8a6a8a;
+  --plum-pale: #f5eef5;
+  --sand: #c4a882;
+  --sand-light: #ede0d0;
+  --olive: #6b7a3a;
+  --olive-light: #e8edcc;
+  --ink: #1a1520;
+  --muted: #7a6a7a;
+  --white: #ffffff;
+  --border: rgba(90,58,90,0.12);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Space Grotesk',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 20px; display:flex; justify-content:space-between; align-items:center;
+  background:rgba(247,243,238,0.96); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-nome { font-size:0.88rem; font-weight:700; letter-spacing:-0.01em; }
+.nav-nome span { color:var(--plum); }
+.nav-btn {
+  padding:9px 18px; background:var(--plum); color:var(--white);
+  font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+  text-decoration:none; border-radius:6px; transition:all 0.3s;
+}
+.nav-btn:hover { background:#4a2a4a; }
+
+/* HERO — layout assimétrico único */
+.hero { min-height:100vh; padding-top:56px; display:flex; flex-direction:column; }
+
+/* Faixa superior com foto em tela cheia */
+.hero-visual {
+  position:relative; height:55vh; min-height:320px; overflow:hidden;
+}
+.hero-img {
+  width:100%; height:100%; object-fit:cover; object-position:center 10%;
+  filter:saturate(0.9);
+}
+.hero-img-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg,
+    rgba(90,58,90,0.7) 0%,
+    rgba(26,21,32,0.3) 50%,
+    rgba(196,168,130,0.2) 100%);
+}
+
+/* Texto flutuante sobre a foto */
+.hero-float {
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  padding:24px; display:flex; flex-direction:column; justify-content:flex-end;
+}
+.hero-especialidades {
+  display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;
+}
+.esp-pill {
+  font-size:0.55rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+  padding:4px 10px; border-radius:4px; border:1px solid rgba(255,255,255,0.3);
+  color:rgba(255,255,255,0.9); background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(4px);
+}
+.hero-nome-big {
+  font-family:'Spectral',serif; font-size:clamp(1.8rem,7vw,3rem);
+  font-weight:300; color:var(--white); line-height:1.1;
+  margin-bottom:4px;
+}
+.hero-nome-big em { font-style:italic; }
+.hero-loc { font-size:0.65rem; color:rgba(255,255,255,0.55); letter-spacing:0.08em; }
+
+/* Faixa de stats */
+.hero-stats-bar {
+  background:var(--plum); padding:20px 24px;
+  display:grid; grid-template-columns:1fr 1fr 1fr;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.stat-item { text-align:center; padding:0 8px; }
+.stat-item:not(:last-child) { border-right:1px solid rgba(255,255,255,0.15); }
+.stat-n { font-family:'Spectral',serif; font-size:1.6rem; font-weight:300; color:var(--white); font-style:italic; }
+.stat-l { font-size:0.55rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.12em; margin-top:2px; }
+
+/* CTA área */
+.hero-bottom { padding:28px 24px; display:flex; flex-direction:column; gap:10px; }
+.hero-tagline {
+  font-family:'Spectral',serif; font-size:1.05rem; font-style:italic;
+  font-weight:300; color:var(--muted); line-height:1.5; margin-bottom:4px;
+}
+.btn-w {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:15px; background:#25d366; color:var(--white);
+  font-size:0.78rem; font-weight:700; text-decoration:none;
+  border-radius:8px; transition:all 0.3s; text-transform:uppercase; letter-spacing:0.06em;
+}
+.btn-w:hover { background:#1eb858; }
+.btn-ghost {
+  display:block; text-align:center; padding:14px;
+  border:1px solid var(--border); color:var(--muted);
+  font-size:0.75rem; text-decoration:none; border-radius:8px; transition:all 0.3s;
+}
+.btn-ghost:hover { border-color:var(--plum); color:var(--plum); }
+
+/* SECTIONS */
+section { padding:48px 24px; }
+
+.s-label {
+  display:flex; align-items:center; gap:10px;
+  font-size:0.58rem; font-weight:700; letter-spacing:0.25em;
+  text-transform:uppercase; color:var(--sand); margin-bottom:14px;
+}
+.s-label::before { content:''; width:24px; height:1px; background:var(--sand); }
+
+.s-title {
+  font-family:'Spectral',serif; font-size:clamp(1.6rem,5vw,2.2rem);
+  font-weight:300; line-height:1.2; margin-bottom:14px;
+}
+.s-title em { font-style:italic; color:var(--plum); }
+.s-txt { font-size:0.82rem; line-height:1.85; color:var(--muted); font-weight:300; }
+
+/* ESPECIALIDADES — lista horizontal estilo magazine */
+.esp-magazine { display:flex; flex-direction:column; gap:1px; margin-top:24px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.esp-row {
+  display:flex; align-items:center; background:var(--white);
+  padding:16px 18px; gap:14px; transition:all 0.2s;
+}
+.esp-row:hover { background:var(--plum-pale); }
+.esp-num {
+  font-family:'Spectral',serif; font-size:1.8rem; font-style:italic;
+  font-weight:300; color:var(--sand-light); flex-shrink:0; width:40px; line-height:1;
+}
+.esp-txt { flex:1; }
+.esp-nome { font-size:0.82rem; font-weight:700; color:var(--ink); margin-bottom:2px; }
+.esp-desc { font-size:0.67rem; color:var(--muted); }
+.esp-dot { width:6px; height:6px; border-radius:50%; background:var(--plum); flex-shrink:0; opacity:0.4; }
+
+/* DEPOIMENTOS — cards estilo citação grande */
+.deps-bg { background:var(--sand-light); }
+.dep-cards { display:flex; flex-direction:column; gap:14px; margin-top:24px; }
+.dep-card {
+  background:var(--white); border-radius:14px; padding:22px 20px;
+  border:1px solid rgba(196,168,130,0.2); position:relative; overflow:hidden;
+}
+.dep-card::before {
+  content:'"'; position:absolute; top:-20px; left:14px;
+  font-family:'Spectral',serif; font-size:8rem; font-style:italic;
+  color:var(--plum); opacity:0.06; line-height:1; font-weight:300;
+}
+.dep-stars { color:var(--sand); font-size:0.7rem; margin-bottom:10px; letter-spacing:2px; }
+.dep-txt {
+  font-family:'Spectral',serif; font-size:0.88rem; font-style:italic;
+  font-weight:300; line-height:1.7; color:var(--ink); margin-bottom:12px;
+}
+.dep-author { display:flex; align-items:center; gap:8px; }
+.dep-init {
+  width:28px; height:28px; border-radius:6px; background:var(--plum);
+  color:white; font-size:0.72rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.dep-nome { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--plum); }
+
+/* INSTAGRAM */
+.insta-bg { background:var(--ink); padding:40px 24px; text-align:center; }
+.insta-bg .s-title { color:var(--white); }
+.insta-bg .s-label { color:rgba(255,255,255,0.3); justify-content:center; }
+.insta-bg .s-label::before { background:rgba(255,255,255,0.2); }
+.btn-insta {
+  display:inline-flex; align-items:center; gap:10px; margin-top:20px;
+  padding:14px 24px; border-radius:10px; text-decoration:none;
+  background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  color:white; font-weight:700; font-size:0.8rem; letter-spacing:0.05em;
+  transition:all 0.3s;
+}
+.btn-insta:hover { transform:translateY(-2px); opacity:0.9; }
+
+/* LOCAL */
+.loc-items { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.loc-row {
+  display:flex; gap:12px; align-items:flex-start;
+  background:var(--white); border:1px solid var(--border);
+  border-radius:10px; padding:14px 16px;
+}
+.loc-icon { font-size:1rem; flex-shrink:0; margin-top:2px; }
+.loc-lbl { font-size:0.55rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--plum); margin-bottom:3px; }
+.loc-val { font-size:0.78rem; color:var(--ink); line-height:1.5; }
+
+/* CTA */
+.cta-bg {
+  background:linear-gradient(135deg, var(--plum) 0%, #3a1a3a 100%);
+  padding:56px 24px; text-align:center; position:relative; overflow:hidden;
+}
+.cta-bg::before {
+  content:''; position:absolute; top:-80px; right:-80px;
+  width:250px; height:250px;
+  background:rgba(196,168,130,0.1); border-radius:50%;
+}
+.cta-titulo {
+  font-family:'Spectral',serif; font-size:clamp(1.8rem,6vw,2.6rem);
+  font-weight:300; font-style:italic; color:var(--white);
+  line-height:1.1; margin-bottom:8px;
+}
+.cta-sub { font-size:0.8rem; color:rgba(255,255,255,0.4); margin-bottom:28px; line-height:1.6; }
+.btn-cta {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 28px; background:var(--sand); color:var(--ink);
+  font-weight:700; font-size:0.8rem; text-decoration:none;
+  border-radius:8px; transition:all 0.3s; text-transform:uppercase; letter-spacing:0.05em;
+}
+.btn-cta:hover { background:#b89870; color:white; transform:translateY(-2px); }
+
+footer { background:#0d0810; padding:22px 24px; text-align:center; }
+.foot { font-size:0.85rem; font-weight:700; color:rgba(255,255,255,0.2); margin-bottom:3px; }
+.foot span { color:var(--plum-light); }
+.foot-sub { font-size:0.55rem; color:rgba(255,255,255,0.1); letter-spacing:0.1em; text-transform:uppercase; }
+
+.reveal { opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-nome">Graziella <span>Santos</span></div>
+  <a href="https://wa.me/5512991581505" class="nav-btn">Agendar</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-visual">
+    <img class="hero-img"
+      src="https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?w=800&q=80&fit=crop&crop=face,top"
+      alt="Nutricionista Graziella Santos">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-float">
+      <div class="hero-especialidades">
+        <span class="esp-pill">Nutrição Clínica</span>
+        <span class="esp-pill">Esportiva</span>
+        <span class="esp-pill">Saúde do Idoso</span>
+      </div>
+      <div class="hero-nome-big"><em>Graziella</em> Santos</div>
+      <div class="hero-loc">📍 Jd. Aquarius · São José dos Campos – SP</div>
+    </div>
+  </div>
+
+  <div class="hero-stats-bar">
+    <div class="stat-item">
+      <div class="stat-n">5★</div>
+      <div class="stat-l">Google</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">3</div>
+      <div class="stat-l">Especialidades</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-n">SJC</div>
+      <div class="stat-l">Aquarius</div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <p class="hero-tagline">"Não é aquela nutri que a consulta dura 15min — ela conversa, entende e adapta pra você."</p>
+    <a href="https://wa.me/5512991581505" class="btn-w">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Agendar consulta
+    </a>
+    <a href="#sobre" class="btn-ghost">Conhecer o trabalho ↓</a>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="reveal">
+    <div class="s-label">Sobre</div>
+    <h2 class="s-title">Nutrição que respeita<br><em>a sua rotina</em></h2>
+    <p class="s-txt">A Dra. Graziella Santos é nutricionista clínica, esportiva e especialista em saúde do idoso. Com um atendimento individualizado e detalhado, ela entende as dificuldades e necessidades de cada paciente, fazendo adaptações específicas para a rotina de cada um. Sem ctrl+c ctrl+v.</p>
+  </div>
+  <div class="esp-magazine reveal">
+    <div class="esp-row">
+      <div class="esp-num">01</div>
+      <div class="esp-txt">
+        <div class="esp-nome">Nutrição Clínica</div>
+        <div class="esp-desc">Tratamento nutricional personalizado para sua saúde</div>
+      </div>
+      <div class="esp-dot"></div>
+    </div>
+    <div class="esp-row">
+      <div class="esp-num">02</div>
+      <div class="esp-txt">
+        <div class="esp-nome">Nutrição Esportiva</div>
+        <div class="esp-desc">Performance e composição corporal para atletas</div>
+      </div>
+      <div class="esp-dot"></div>
+    </div>
+    <div class="esp-row">
+      <div class="esp-num">03</div>
+      <div class="esp-txt">
+        <div class="esp-nome">Saúde do Idoso</div>
+        <div class="esp-desc">Nutrição especializada para a melhor idade</div>
+      </div>
+      <div class="esp-dot"></div>
+    </div>
+    <div class="esp-row">
+      <div class="esp-num">04</div>
+      <div class="esp-txt">
+        <div class="esp-nome">Atendimento Online</div>
+        <div class="esp-desc">Para todo o Brasil via teleconsulta</div>
+      </div>
+      <div class="esp-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="deps-bg">
+  <div class="reveal">
+    <div class="s-label">Pacientes</div>
+    <h2 class="s-title">Quem já está no<br><em>caminho certo</em></h2>
+  </div>
+  <div class="dep-cards">
+    <div class="dep-card reveal">
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-txt">"Dra. Graziella é muito competente, tem foco e entende no detalhe nossas dificuldades e necessidades, faz adaptação específica para a nossa rotina. Uma profissional que indico sempre!"</div>
+      <div class="dep-author">
+        <div class="dep-init">L</div>
+        <div class="dep-nome">Leni Santos · Google</div>
+      </div>
+    </div>
+    <div class="dep-card reveal">
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-txt">"A Dra. Graziella é maravilhosa — nossa consulta levou 1 hora! Ela não é aquela nutri que a consulta dura 15min e você sai com a dieta pronta ctrl+c ctrl+v. Amei! 🥰"</div>
+      <div class="dep-author">
+        <div class="dep-init">C</div>
+        <div class="dep-nome">Camila Santos · Google</div>
+      </div>
+    </div>
+    <div class="dep-card reveal">
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-txt">"Graziella é uma excelente nutricionista muito competente. Tive a oportunidade de trabalhar com ela — foi uma experiência incrível! Super indico."</div>
+      <div class="dep-author">
+        <div class="dep-init">M</div>
+        <div class="dep-nome">Maria Araújo · Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<div class="insta-bg">
+  <div class="reveal">
+    <div class="s-label">Redes sociais</div>
+    <h2 class="s-title" style="color:white;font-family:'Spectral',serif;font-weight:300">Siga no <em>Instagram</em></h2>
+    <a href="https://www.instagram.com/nutri_grazisantos/" target="_blank" class="btn-insta">
+      📸 @nutri_grazisantos
+    </a>
+  </div>
+</div>
+
+<!-- LOCAL -->
+<section id="contato">
+  <div class="reveal">
+    <div class="s-label">Localização</div>
+    <h2 class="s-title">Onde nos <em>encontrar</em></h2>
+  </div>
+  <div class="loc-items">
+    <div class="loc-row reveal">
+      <div class="loc-icon">📍</div>
+      <div>
+        <div class="loc-lbl">Endereço</div>
+        <div class="loc-val">Av. Alfredo Ignácio Nogueira Penido, 255 · sala 209<br>Jd. Aquarius · São José dos Campos – SP</div>
+      </div>
+    </div>
+    <div class="loc-row reveal">
+      <div class="loc-icon">📱</div>
+      <div>
+        <div class="loc-lbl">WhatsApp</div>
+        <div class="loc-val">(12) 99158-1505</div>
+      </div>
+    </div>
+    <div class="loc-row reveal">
+      <div class="loc-icon">📸</div>
+      <div>
+        <div class="loc-lbl">Instagram</div>
+        <div class="loc-val">@nutri_grazisantos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-bg">
+  <div class="reveal">
+    <h2 class="cta-titulo">Sua consulta<br>começa aqui.</h2>
+    <p class="cta-sub">Atendimento individualizado · Clínica, Esportiva e Saúde do Idoso<br>Jd. Aquarius · São José dos Campos</p>
+    <a href="https://wa.me/5512991581505" class="btn-cta">💬 Agendar agora</a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot">Graziella <span>Santos</span></div>
+  <div class="foot-sub">Nutricionista · Jd. Aquarius · SJC – SP</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

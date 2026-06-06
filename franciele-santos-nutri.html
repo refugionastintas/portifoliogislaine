@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franciele Santos · Nutricionista</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --bg: #fdf9f4;
+  --peach: #e8845a;
+  --peach-light: #fde8dc;
+  --peach-pale: #fff5ef;
+  --teal: #2a6b6b;
+  --teal-light: #d4ecec;
+  --ink: #1a1a2e;
+  --muted: #6b6b80;
+  --white: #ffffff;
+  --border: rgba(232,132,90,0.15);
+  --gold: #d4a853;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 20px; display:flex; justify-content:space-between; align-items:center;
+  background:rgba(253,249,244,0.95); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-brand { display:flex; flex-direction:column; }
+.nav-nome { font-size:0.88rem; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
+.nav-tag { font-size:0.58rem; color:var(--peach); font-weight:600; letter-spacing:0.1em; text-transform:uppercase; }
+.nav-btn {
+  padding:9px 18px; background:var(--peach); color:var(--white);
+  font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+  text-decoration:none; border-radius:8px; transition:all 0.3s;
+}
+.nav-btn:hover { background:#d4734a; }
+
+/* HERO — estilo completamente diferente: minimalista com foto lateral */
+.hero {
+  min-height:100vh; padding-top:56px;
+  display:flex; flex-direction:column;
+  background:var(--bg);
+}
+
+.hero-text-area {
+  padding:40px 24px 32px;
+  background: linear-gradient(135deg, var(--ink) 0%, #2a1a3e 100%);
+  position:relative; overflow:hidden;
+}
+
+/* Padrão geométrico de fundo */
+.hero-text-area::before {
+  content:'';
+  position:absolute; inset:0;
+  background-image: radial-gradient(circle at 80% 20%, rgba(232,132,90,0.2) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(42,107,107,0.15) 0%, transparent 50%);
+}
+
+.hero-num {
+  font-family:'Instrument Serif',serif; font-size:6rem; font-style:italic;
+  color:rgba(255,255,255,0.04); line-height:1; position:absolute;
+  top:10px; right:16px; font-weight:400;
+}
+
+.hero-content { position:relative; z-index:1; }
+
+.hero-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+.chip-hero {
+  font-size:0.58rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+  padding:4px 10px; border-radius:6px;
+}
+.chip-peach { background:rgba(232,132,90,0.2); color:#f0a080; border:1px solid rgba(232,132,90,0.3); }
+.chip-teal { background:rgba(42,107,107,0.2); color:#80c0c0; border:1px solid rgba(42,107,107,0.3); }
+
+.hero-titulo {
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(2.2rem,8vw,3.5rem);
+  font-weight:400; line-height:1.1; color:var(--white); margin-bottom:14px;
+}
+.hero-titulo em { font-style:italic; color:#f0a080; }
+
+.hero-desc { font-size:0.8rem; font-weight:300; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:24px; }
+
+.hero-proof {
+  display:flex; align-items:center; gap:10px;
+  padding:12px 14px; background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1); border-radius:10px; margin-bottom:24px;
+}
+.proof-stars { color:var(--gold); font-size:0.9rem; letter-spacing:2px; }
+.proof-txt { font-size:0.68rem; color:rgba(255,255,255,0.5); line-height:1.4; }
+.proof-txt strong { color:rgba(255,255,255,0.8); display:block; }
+
+/* FOTO — estilo polaroid/card */
+.hero-foto-wrap {
+  margin:0; position:relative; overflow:hidden; height:320px;
+}
+.hero-foto { width:100%; height:100%; object-fit:cover; object-position:center 15%; display:block; }
+.hero-foto-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(26,26,46,0.8) 0%, transparent 50%);
+}
+.hero-foto-info {
+  position:absolute; bottom:0; left:0; right:0; padding:20px;
+  display:flex; justify-content:space-between; align-items:flex-end;
+}
+.foto-nome {
+  font-family:'Instrument Serif',serif; font-size:1.3rem; font-style:italic;
+  color:var(--white); font-weight:400;
+}
+.foto-esp { font-size:0.62rem; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.1em; }
+.foto-badge {
+  background:var(--peach); color:white; font-size:0.6rem; font-weight:800;
+  padding:6px 10px; border-radius:8px; text-align:center; line-height:1.3;
+  text-transform:uppercase; letter-spacing:0.05em;
+}
+
+/* BOTÕES */
+.hero-btns { display:flex; flex-direction:column; gap:10px; padding:24px 24px 0; }
+.btn-w {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:15px; background:#25d366; color:var(--white);
+  font-size:0.78rem; font-weight:700; text-decoration:none;
+  border-radius:10px; transition:all 0.3s; text-transform:uppercase; letter-spacing:0.06em;
+}
+.btn-w:hover { background:#1eb858; }
+.btn-i {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:14px; text-decoration:none; border-radius:10px; transition:all 0.3s;
+  background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  color:white; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;
+}
+
+/* SOBRE */
+section { padding:48px 24px; }
+
+.sec-eyebrow {
+  font-size:0.58rem; font-weight:800; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--peach); margin-bottom:10px; display:flex; align-items:center; gap:8px;
+}
+.sec-eyebrow::after { content:''; flex:1; height:1px; background:var(--border); }
+
+.sec-title {
+  font-family:'Instrument Serif',serif; font-size:clamp(1.6rem,5vw,2.2rem);
+  font-weight:400; line-height:1.15; margin-bottom:14px;
+}
+.sec-title em { font-style:italic; color:var(--peach); }
+.sec-txt { font-size:0.82rem; line-height:1.85; color:var(--muted); font-weight:300; }
+
+/* PILARES */
+.pilares { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:24px; }
+.pilar {
+  padding:18px 14px; border-radius:14px; border:1px solid var(--border);
+  background:var(--white); transition:all 0.25s;
+}
+.pilar:hover { border-color:var(--peach); box-shadow:0 4px 20px rgba(232,132,90,0.1); }
+.pilar-icon { font-size:1.5rem; margin-bottom:8px; }
+.pilar-nome { font-size:0.78rem; font-weight:700; color:var(--ink); line-height:1.3; }
+.pilar-desc { font-size:0.65rem; color:var(--muted); margin-top:3px; line-height:1.4; }
+
+/* DEPOIMENTOS — estilo timeline */
+.deps-bg { background:var(--peach-pale); }
+.dep-timeline { display:flex; flex-direction:column; gap:0; margin-top:24px; position:relative; }
+.dep-timeline::before {
+  content:''; position:absolute; left:16px; top:0; bottom:0;
+  width:1px; background:var(--border);
+}
+.dep-item { display:flex; gap:16px; padding-bottom:20px; position:relative; }
+.dep-item:last-child { padding-bottom:0; }
+.dep-circle {
+  width:32px; height:32px; border-radius:50%; background:var(--peach);
+  display:flex; align-items:center; justify-content:center;
+  color:white; font-size:0.75rem; font-weight:800; flex-shrink:0; z-index:1;
+}
+.dep-body {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:0 14px 14px 14px; padding:14px 16px; flex:1;
+}
+.dep-stars { color:var(--gold); font-size:0.7rem; margin-bottom:6px; }
+.dep-txt { font-family:'Instrument Serif',serif; font-size:0.88rem; font-style:italic; line-height:1.6; color:var(--ink); margin-bottom:8px; }
+.dep-name { font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--peach); }
+
+/* LOCAL */
+.loc-bg { background:var(--teal); }
+.loc-bg .sec-title { color:var(--white); }
+.loc-bg .sec-eyebrow { color:rgba(255,255,255,0.5); }
+.loc-bg .sec-eyebrow::after { background:rgba(255,255,255,0.1); }
+
+.loc-items { display:flex; flex-direction:column; gap:12px; margin-top:24px; }
+.loc-item {
+  display:flex; gap:12px; align-items:flex-start;
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px; padding:14px 16px;
+}
+.loc-ico { font-size:1.1rem; flex-shrink:0; margin-top:1px; }
+.loc-lbl { font-size:0.58rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,255,255,0.45); margin-bottom:3px; }
+.loc-val { font-size:0.78rem; color:rgba(255,255,255,0.85); line-height:1.5; }
+
+/* CTA */
+.cta-bg { background:var(--ink); text-align:center; padding:56px 24px; }
+.cta-title {
+  font-family:'Instrument Serif',serif; font-size:clamp(1.8rem,6vw,2.6rem);
+  font-weight:400; color:var(--white); line-height:1.1; margin-bottom:8px;
+}
+.cta-title em { font-style:italic; color:#f0a080; }
+.cta-sub { font-size:0.8rem; color:rgba(255,255,255,0.4); margin-bottom:28px; line-height:1.6; }
+.btn-cta {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 28px; background:var(--peach); color:var(--white);
+  font-weight:700; font-size:0.8rem; text-decoration:none;
+  border-radius:10px; transition:all 0.3s; text-transform:uppercase; letter-spacing:0.05em;
+}
+.btn-cta:hover { background:#d4734a; transform:translateY(-2px); }
+
+footer { background:#0d0d1a; padding:22px 24px; text-align:center; }
+.foot { font-size:0.85rem; font-weight:700; color:rgba(255,255,255,0.25); margin-bottom:3px; }
+.foot span { color:var(--peach); }
+.foot-sub { font-size:0.55rem; color:rgba(255,255,255,0.12); letter-spacing:0.1em; text-transform:uppercase; }
+
+.reveal { opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-nome">Franciele Santos</div>
+    <div class="nav-tag">Nutricionista · SJC</div>
+  </div>
+  <a href="https://wa.me/5512997099886" class="nav-btn">Agendar</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-text-area">
+    <div class="hero-num">01</div>
+    <div class="hero-content">
+      <div class="hero-chips">
+        <span class="chip-hero chip-peach">✦ Nutricionista</span>
+        <span class="chip-hero chip-teal">Atendimento humanizado</span>
+      </div>
+      <h1 class="hero-titulo">Você já tentou<br>antes. Dessa vez<br><em>vai ser diferente.</em></h1>
+      <p class="hero-desc">Porque desta vez você não vai receber uma dieta genérica. Vai ter alguém do seu lado, entendendo sua rotina, suas dificuldades — e construindo um caminho que você consegue seguir de verdade.</p>
+      <div class="hero-proof">
+        <div>
+          <div class="proof-stars">★★★★★</div>
+        </div>
+        <div class="proof-txt">
+          <strong>"Melhor decisão que tomei este ano."</strong>
+Pamela Moreira · paciente da Franciele
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foto-wrap">
+    <img class="hero-foto"
+      src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80&fit=crop&crop=face,top"
+      alt="Nutricionista Franciele Santos">
+    <div class="hero-foto-overlay"></div>
+    <div class="hero-foto-info">
+      <div>
+        <div class="foto-nome">Franciele Santos</div>
+        <div class="foto-esp">Nutricionista · Jardim Satélite</div>
+      </div>
+      <div class="foto-badge">SJC<br>–SP</div>
+    </div>
+  </div>
+
+  <div class="hero-btns">
+    <a href="https://wa.me/5512997099886" class="btn-w">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Agendar pelo WhatsApp
+    </a>
+    <a href="https://www.instagram.com/nutrifrancielesantos/" target="_blank" class="btn-i">
+      📸 @nutrifrancielesantos
+    </a>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="reveal">
+    <div class="sec-eyebrow">Sobre</div>
+    <h2 class="sec-title">Cuidado <em>humanizado</em><br>e resultados reais</h2>
+    <p class="sec-txt">A Franciele Santos é nutricionista especialista em mudança de estilo de vida e alimentação saudável. Com um atendimento acolhedor e personalizado, ela acompanha cada paciente de perto, ajustando o plano alimentar à rotina e aos objetivos de cada um.</p>
+  </div>
+  <div class="pilares reveal">
+    <div class="pilar"><div class="pilar-icon">🥗</div><div class="pilar-nome">Reeducação Alimentar</div><div class="pilar-desc">Mudanças que cabem na sua vida</div></div>
+    <div class="pilar"><div class="pilar-icon">⚖️</div><div class="pilar-nome">Emagrecimento</div><div class="pilar-desc">Resultados saudáveis e duradouros</div></div>
+    <div class="pilar"><div class="pilar-icon">🌿</div><div class="pilar-nome">Estilo de Vida</div><div class="pilar-desc">Hábitos que transformam</div></div>
+    <div class="pilar"><div class="pilar-icon">💻</div><div class="pilar-nome">Atendimento Online</div><div class="pilar-desc">Para todo o Brasil</div></div>
+  </div>
+</section>
+
+
+<!-- COMO FUNCIONA -->
+<section style="background:var(--ink); padding:48px 24px;">
+  <div class="reveal">
+    <div class="sec-eyebrow" style="color:rgba(255,255,255,0.3)">Processo</div>
+    <h2 class="sec-title" style="color:var(--white); font-family:'Instrument Serif',serif; font-weight:400;">Do primeiro contato<br>ao <em style="color:#f0a080">resultado real</em></h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:0;margin-top:28px;">
+    <div class="reveal" style="display:flex;gap:16px;padding-bottom:24px;">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--peach);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">1</div>
+        <div style="width:1px;flex:1;background:rgba(255,255,255,0.08);margin:6px 0;min-height:28px;"></div>
+      </div>
+      <div style="padding-top:6px;">
+        <div style="font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:4px;">Primeira consulta — você fala, ela escuta</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.6;">Sem julgamentos. Sem planilha genérica. Ela precisa te conhecer de verdade antes de sugerir qualquer coisa.</div>
+      </div>
+    </div>
+    <div class="reveal" style="display:flex;gap:16px;padding-bottom:24px;">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--peach);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">2</div>
+        <div style="width:1px;flex:1;background:rgba(255,255,255,0.08);margin:6px 0;min-height:28px;"></div>
+      </div>
+      <div style="padding-top:6px;">
+        <div style="font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:4px;">Plano feito pra você — não pra todo mundo</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.6;">Seu plano leva em conta o que você gosta, o que você não aguenta comer e o que sua rotina permite.</div>
+      </div>
+    </div>
+    <div class="reveal" style="display:flex;gap:16px;padding-bottom:24px;">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--peach);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">3</div>
+        <div style="width:1px;flex:1;background:rgba(255,255,255,0.08);margin:6px 0;min-height:28px;"></div>
+      </div>
+      <div style="padding-top:6px;">
+        <div style="font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:4px;">Acompanhamento real — ela não some</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.6;">Retornos frequentes, ajustes no plano e suporte para quando a vontade de desistir aparecer.</div>
+      </div>
+    </div>
+    <div class="reveal" style="display:flex;gap:16px;">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--teal);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">4</div>
+      </div>
+      <div style="padding-top:6px;">
+        <div style="font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:4px;">Resultado — que fica pra sempre</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.6;">Não é sobre emagrecer pra uma festa. É sobre mudar a relação com a comida pra o resto da vida.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="deps-bg">
+  <div class="reveal">
+    <div class="sec-eyebrow" style="color:var(--peach)">Pacientes</div>
+    <h2 class="sec-title">Resultados que <em>falam por si</em></h2>
+  </div>
+  <div class="dep-timeline">
+    <div class="dep-item reveal">
+      <div class="dep-circle">P</div>
+      <div class="dep-body">
+        <div class="dep-stars">★★★★★</div>
+        <div class="dep-txt">"Excelente nutricionista, estou fazendo o acompanhamento com ela e estou tendo um resultado super positivo. Melhor decisão que tomei este ano. Amo o trabalho da Franciele!"</div>
+        <div class="dep-name">Pamela Moreira · Google</div>
+      </div>
+    </div>
+    <div class="dep-item reveal">
+      <div class="dep-circle">J</div>
+      <div class="dep-body">
+        <div class="dep-stars">★★★★★</div>
+        <div class="dep-txt">"Excelente! A Franciele é uma profissional impecável, recomendo muito para quem busca um atendimento humanizado e de excelência!"</div>
+        <div class="dep-name">Juan Yglesias · Google</div>
+      </div>
+    </div>
+    <div class="dep-item reveal">
+      <div class="dep-circle">E</div>
+      <div class="dep-body">
+        <div class="dep-stars">★★★★★</div>
+        <div class="dep-txt">"Excelente profissional!! Muito atenciosa, super indico para as pessoas que querem mudar seu estilo de vida e alimentação. Já estou no caminho!"</div>
+        <div class="dep-name">Eliane Ferreira · Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL -->
+<section class="loc-bg" id="contato">
+  <div class="reveal">
+    <div class="sec-eyebrow">Localização</div>
+    <h2 class="sec-title">Onde nos <em style="color:#80c0c0">encontrar</em></h2>
+  </div>
+  <div class="loc-items">
+    <div class="loc-item reveal">
+      <div class="loc-ico">📍</div>
+      <div>
+        <div class="loc-lbl">Endereço</div>
+        <div class="loc-val">R. Cisne, 300 · Jardim Satélite<br>São José dos Campos – SP</div>
+      </div>
+    </div>
+    <div class="loc-item reveal">
+      <div class="loc-ico">📱</div>
+      <div>
+        <div class="loc-lbl">WhatsApp</div>
+        <div class="loc-val">(12) 99709-9886</div>
+      </div>
+    </div>
+    <div class="loc-item reveal">
+      <div class="loc-ico">📸</div>
+      <div>
+        <div class="loc-lbl">Instagram</div>
+        <div class="loc-val">@nutrifrancielesantos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-bg">
+  <div class="reveal">
+    <h2 class="cta-title">Pronta para<br><em>começar?</em></h2>
+    <p class="cta-sub">Você já esperou tempo suficiente. A Franciele está em São José dos Campos e atende online para todo o Brasil.<br>Uma conversa pode mudar tudo.</p>
+    <a href="https://wa.me/5512997099886" class="btn-cta">
+      💬 Agendar agora
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot">Franciele <span>Santos</span></div>
+  <div class="foot-sub">Nutricionista · Jardim Satélite · SJC – SP</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
