@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tatiane Vieira · Psicóloga em São José dos Campos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --wine: #6b1f2a;
+  --wine-deep: #4a1019;
+  --wine-light: #f5e8ea;
+  --wine-pale: #fdf5f6;
+  --rose: #c4707a;
+  --rose-light: #e8a8b0;
+  --ink: #1a1015;
+  --muted: #6a5a5e;
+  --white: #fff;
+  --border: #ede0e2;
+  --dark: #1a0810;
+  --gold: #c9a84c;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'DM Sans',sans-serif; background:var(--wine-pale); color:var(--ink); overflow-x:hidden; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 24px; display:flex; justify-content:space-between; align-items:center;
+  background:rgba(253,245,246,0.97); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo { font-family:'Cormorant',serif; font-size:1.1rem; font-weight:400; color:var(--ink); }
+.nav-logo span { color:var(--wine); font-style:italic; }
+.nav-btn {
+  padding:10px 20px; background:var(--wine); color:var(--white);
+  font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+  text-decoration:none; border-radius:6px; transition:all 0.3s;
+}
+.nav-btn:hover { background:var(--wine-deep); }
+
+/* HERO — fundo vinho escuro com textura */
+.hero {
+  min-height:100vh; padding-top:56px;
+  background:var(--dark); position:relative; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 15% 60%, rgba(107,31,42,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(74,16,25,0.4) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(107,31,42,0.3) 0%, transparent 50%);
+}
+
+/* Linhas decorativas */
+.hero::after {
+  content:''; position:absolute;
+  top:10%; right:10%;
+  width:180px; height:180px;
+  border:1px solid rgba(196,112,122,0.12);
+  border-radius:50%;
+}
+
+.hero-foto {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center top; opacity:0.2;
+  mix-blend-mode:luminosity;
+}
+
+.hero-content {
+  position:relative; z-index:2; padding:48px 24px 56px;
+  animation:up 0.9s ease both;
+}
+@keyframes up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+
+.hero-chip {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(107,31,42,0.3); border:1px solid rgba(196,112,122,0.3);
+  color:var(--rose-light); font-size:0.6rem; font-weight:600; letter-spacing:0.2em;
+  text-transform:uppercase; padding:5px 14px; border-radius:4px;
+  margin-bottom:24px; width:fit-content;
+}
+
+.hero-h1 {
+  font-family:'Cormorant',serif; font-size:clamp(2.4rem,9vw,3.8rem);
+  font-weight:300; line-height:1.05; color:var(--white); margin-bottom:20px;
+}
+.hero-h1 em { font-style:italic; color:var(--rose-light); display:block; }
+
+/* Bio como destaque */
+.hero-bio {
+  font-family:'Cormorant',serif; font-size:1.1rem; font-style:italic;
+  font-weight:300; color:rgba(255,255,255,0.5); line-height:1.6;
+  margin-bottom:12px; border-left:2px solid var(--wine); padding-left:14px;
+}
+
+.hero-tags {
+  display:flex; gap:8px; flex-wrap:wrap; margin-bottom:32px; margin-top:16px;
+}
+.hero-tag {
+  font-size:0.62rem; font-weight:500; padding:4px 12px; border-radius:4px;
+  background:rgba(107,31,42,0.3); border:1px solid rgba(196,112,122,0.2);
+  color:var(--rose-light);
+}
+
+.hero-btns { display:flex; flex-direction:column; gap:10px; }
+.btn-w {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:15px; background:#25d366; color:var(--white);
+  font-size:0.78rem; font-weight:700; text-decoration:none;
+  border-radius:8px; transition:all 0.3s; text-transform:uppercase; letter-spacing:0.06em;
+}
+.btn-w:hover { background:#1eb858; }
+.btn-ghost {
+  display:block; text-align:center; padding:14px;
+  border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.45);
+  font-size:0.75rem; text-decoration:none; border-radius:8px; transition:all 0.3s;
+}
+.btn-ghost:hover { border-color:var(--rose); color:var(--rose-light); }
+
+/* SECTIONS */
+.sec { padding:52px 24px; }
+.sec-white { background:var(--white); }
+.sec-wine-pale { background:var(--wine-pale); }
+.sec-wine-light { background:var(--wine-light); }
+.sec-dark { background:var(--dark); }
+
+.sec-eyebrow {
+  font-size:0.58rem; font-weight:600; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--wine); margin-bottom:12px; display:flex; align-items:center; gap:10px;
+}
+.sec-eyebrow::after { content:''; flex:1; height:1px; background:rgba(107,31,42,0.15); }
+
+.sec-h2 {
+  font-family:'Cormorant',serif; font-size:clamp(1.8rem,6vw,2.6rem);
+  font-weight:300; line-height:1.15; margin-bottom:16px;
+}
+.sec-h2 em { font-style:italic; color:var(--wine); }
+.sec-p { font-size:0.86rem; line-height:1.9; color:var(--muted); font-weight:300; }
+.sec-p + .sec-p { margin-top:12px; }
+.sec-p strong { color:var(--ink); font-weight:600; }
+
+/* FRASE IMPACTO */
+.frase-impacto {
+  background:var(--wine); border-radius:12px; padding:28px 24px;
+  margin-top:24px; position:relative; overflow:hidden;
+}
+.frase-impacto::before {
+  content:'"'; position:absolute; top:-20px; right:16px;
+  font-family:'Cormorant',serif; font-size:8rem; font-style:italic;
+  color:rgba(255,255,255,0.06); line-height:1;
+}
+.frase-txt {
+  font-family:'Cormorant',serif; font-size:1.15rem; font-style:italic;
+  font-weight:300; color:rgba(255,255,255,0.9); line-height:1.7;
+  position:relative; z-index:1;
+}
+.frase-ass { font-size:0.68rem; color:rgba(255,255,255,0.45); margin-top:12px; text-transform:uppercase; letter-spacing:0.1em; }
+
+/* PARA QUEM */
+.bullets { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.bullet {
+  display:flex; align-items:flex-start; gap:12px;
+  background:var(--white); border:1px solid var(--border);
+  border-radius:10px; padding:14px 16px; transition:all 0.2s;
+}
+.bullet:hover { border-color:var(--wine); }
+.bullet-icon { font-size:1.1rem; flex-shrink:0; }
+.bullet-txt { font-size:0.82rem; color:var(--ink); line-height:1.5; }
+.bullet-txt strong { color:var(--wine); }
+
+/* COMO FUNCIONA */
+.etapas { display:flex; flex-direction:column; gap:0; margin-top:24px; }
+.etapa { display:flex; gap:16px; padding-bottom:24px; }
+.etapa:last-child { padding-bottom:0; }
+.etapa-esq { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+.etapa-num {
+  width:38px; height:38px; border-radius:6px;
+  background:var(--wine); color:var(--white);
+  font-family:'Cormorant',serif; font-size:1.1rem; font-style:italic;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.etapa-linha { width:1px; flex:1; background:var(--border); margin:6px 0; min-height:20px; }
+.etapa-corpo { padding-top:8px; }
+.etapa-titulo { font-size:0.88rem; font-weight:600; color:var(--ink); margin-bottom:5px; }
+.etapa-desc { font-size:0.78rem; color:var(--muted); line-height:1.7; }
+
+/* SERVIÇOS */
+.servicos { display:flex; flex-direction:column; gap:1px; margin-top:24px; background:var(--border); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+.servico {
+  display:flex; align-items:center; gap:14px;
+  background:var(--white); padding:15px 18px; transition:all 0.2s;
+}
+.servico:hover { background:var(--wine-pale); }
+.servico-check {
+  width:20px; height:20px; border-radius:4px;
+  background:var(--wine-light); color:var(--wine);
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.6rem; flex-shrink:0; font-weight:700;
+}
+.servico-nome { font-size:0.82rem; font-weight:500; }
+
+/* CARROSSEL */
+.carousel-wrap { position:relative; margin-top:28px; overflow:hidden; }
+.carousel {
+  display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory;
+  scrollbar-width:none; -ms-overflow-style:none; padding-bottom:4px;
+}
+.carousel::-webkit-scrollbar { display:none; }
+.dep-slide {
+  min-width:calc(100% - 48px); scroll-snap-align:start;
+  border-radius:14px; overflow:hidden; flex-shrink:0;
+  background:rgba(255,255,255,0.04); border:1px solid rgba(196,112,122,0.15);
+}
+.dep-slide img { width:100%; display:block; }
+
+.carousel-dots { display:flex; justify-content:center; gap:6px; margin-top:16px; }
+.dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:all 0.3s; border:none; padding:0; }
+.dot.active { background:var(--rose); width:18px; border-radius:3px; }
+.carousel-nav { display:flex; justify-content:center; gap:10px; margin-top:14px; }
+.carousel-btn {
+  width:36px; height:36px; border-radius:50%;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(196,112,122,0.2);
+  color:rgba(255,255,255,0.5); font-size:1rem; cursor:pointer; transition:all 0.2s;
+  display:flex; align-items:center; justify-content:center;
+}
+.carousel-btn:hover { background:var(--wine); color:white; border-color:var(--wine); }
+
+/* LOCAL */
+.local-items { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.local-item {
+  display:flex; gap:14px; background:var(--white);
+  border:1px solid var(--border); border-radius:10px; padding:16px;
+}
+.local-icon { font-size:1.1rem; flex-shrink:0; }
+.local-lbl { font-size:0.58rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--wine); margin-bottom:3px; }
+.local-val { font-size:0.8rem; color:var(--ink); line-height:1.5; }
+
+/* CTA */
+.cta-bg {
+  background:linear-gradient(135deg, var(--wine) 0%, var(--wine-deep) 100%);
+  padding:60px 24px; text-align:center; position:relative; overflow:hidden;
+}
+.cta-bg::before {
+  content:''; position:absolute; top:-80px; right:-80px;
+  width:250px; height:250px; border-radius:50%; background:rgba(255,255,255,0.03);
+}
+.cta-h {
+  font-family:'Cormorant',serif; font-size:clamp(1.8rem,6vw,2.8rem);
+  font-weight:300; font-style:italic; color:var(--white); line-height:1.1; margin-bottom:12px;
+  position:relative; z-index:1;
+}
+.cta-p { font-size:0.84rem; color:rgba(255,255,255,0.55); margin-bottom:28px; line-height:1.7; position:relative; z-index:1; }
+.btn-cta {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 28px; background:var(--white); color:var(--wine);
+  font-weight:700; font-size:0.8rem; text-decoration:none;
+  border-radius:8px; transition:all 0.3s; position:relative; z-index:1;
+  text-transform:uppercase; letter-spacing:0.06em;
+}
+.btn-cta:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.2); }
+
+footer { background:#0d0408; padding:24px; text-align:center; }
+.foot { font-family:'Cormorant',serif; font-size:0.95rem; font-style:italic; color:rgba(255,255,255,0.25); margin-bottom:4px; }
+.foot span { color:var(--rose); }
+.foot-sub { font-size:0.55rem; color:rgba(255,255,255,0.12); letter-spacing:0.1em; text-transform:uppercase; }
+
+.reveal { opacity:0; transform:translateY(20px); transition:all 0.65s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Tatiane <span>Vieira</span></div>
+  <a href="https://wa.me/5512988513458" class="nav-btn">Agendar sessão</a>
+</nav>
+
+<div class="hero">
+  <img class="hero-foto"
+    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80&fit=crop&crop=face,top"
+    alt="Psicóloga Tatiane Vieira">
+  <div class="hero-content">
+    <div class="hero-chip">✦ Psicóloga · São José dos Campos</div>
+    <h1 class="hero-h1">
+      Pra quem aprendeu
+      <em>a funcionar quebrado.</em>
+    </h1>
+    <div class="hero-bio">"Você não precisa estar no fundo do poço pra merecer ajuda. Às vezes só estar cansada de carregar tanto já é motivo suficiente."</div>
+    <div class="hero-tags">
+      <span class="hero-tag">Ansiedade</span>
+      <span class="hero-tag">Depressão</span>
+      <span class="hero-tag">Burnout</span>
+    </div>
+    <div class="hero-btns">
+      <a href="https://wa.me/5512988513458" class="btn-w">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quero agendar minha sessão
+      </a>
+      <a href="#sobre" class="btn-ghost">Conhecer o trabalho ↓</a>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section class="sec sec-white" id="sobre">
+  <div class="reveal">
+    <div class="sec-eyebrow">Sobre</div>
+    <h2 class="sec-h2">Você aprendeu a<br><em>sobreviver. Agora vamos<br>aprender a viver.</em></h2>
+    <p class="sec-p">Sou a <strong>Tatiane Vieira</strong>, psicóloga especializada em ansiedade, depressão e burnout. Trabalho com pessoas que aprenderam a funcionar no limite — que já normalizaram o cansaço, a angústia e a sensação de que algo está errado mas não sabem bem o quê.</p>
+    <p class="sec-p">Meu trabalho é criar um espaço onde você pode parar, respirar e começar a entender o que está acontecendo com você — <strong>sem julgamentos, sem pressa e sem respostas prontas.</strong></p>
+  </div>
+  <div class="frase-impacto reveal">
+    <div class="frase-txt">"Pedir ajuda não é desistir. É decidir que você merece mais do que só sobreviver."</div>
+    <div class="frase-ass">— Tatiane Vieira, Psicóloga</div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="sec sec-wine-pale">
+  <div class="reveal">
+    <div class="sec-eyebrow">Para quem é</div>
+    <h2 class="sec-h2">Você se reconhece<br><em>em algum desses?</em></h2>
+  </div>
+  <div class="bullets">
+    <div class="bullet reveal"><div class="bullet-icon">🔋</div><div class="bullet-txt"><strong>Esgotamento constante</strong> — mesmo depois de descansar, a energia não volta</div></div>
+    <div class="bullet reveal"><div class="bullet-icon">😶</div><div class="bullet-txt"><strong>Ansiedade que não para</strong> — pensamentos acelerados, corpo tenso, sensação de perigo o tempo todo</div></div>
+    <div class="bullet reveal"><div class="bullet-icon">🌫️</div><div class="bullet-txt"><strong>Tristeza sem motivo aparente</strong> — ou com motivo, mas sem conseguir sair dela</div></div>
+    <div class="bullet reveal"><div class="bullet-icon">💼</div><div class="bullet-txt"><strong>Burnout no trabalho</strong> — aquela sensação de que não aguenta mais mas não pode parar</div></div>
+    <div class="bullet reveal"><div class="bullet-icon">🪞</div><div class="bullet-txt"><strong>Sensação de estar perdida</strong> — sem saber quem você é fora das suas obrigações</div></div>
+  </div>
+  <div class="reveal" style="margin-top:24px;">
+    <a href="https://wa.me/5512988513458" class="btn-w" style="background:var(--wine);">Me identifico. Quero ajuda →</a>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="sec sec-white">
+  <div class="reveal">
+    <div class="sec-eyebrow">Como funciona</div>
+    <h2 class="sec-h2">Do primeiro contato<br><em>ao recomeço.</em></h2>
+  </div>
+  <div class="etapas reveal">
+    <div class="etapa">
+      <div class="etapa-esq"><div class="etapa-num">1</div><div class="etapa-linha"></div></div>
+      <div class="etapa-corpo">
+        <div class="etapa-titulo">Primeiro contato — sem compromisso</div>
+        <div class="etapa-desc">Manda uma mensagem no WhatsApp. A gente conversa rapidinho, você tira suas dúvidas e a gente marca a primeira sessão.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-esq"><div class="etapa-num">2</div><div class="etapa-linha"></div></div>
+      <div class="etapa-corpo">
+        <div class="etapa-titulo">Primeira sessão — só ouvir</div>
+        <div class="etapa-desc">Sem diagnóstico apressado, sem julgamento. A primeira sessão é pra você falar — e pra mim escutar de verdade.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-esq"><div class="etapa-num">3</div><div class="etapa-linha"></div></div>
+      <div class="etapa-corpo">
+        <div class="etapa-titulo">Processo — no seu tempo</div>
+        <div class="etapa-desc">Sessões semanais, respeitando o seu ritmo. Sem cobranças, sem comparações. Só você e o seu processo.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-esq"><div class="etapa-num">4</div></div>
+      <div class="etapa-corpo">
+        <div class="etapa-titulo">Transformação — real e duradoura</div>
+        <div class="etapa-desc">Aos poucos você percebe: mais clareza, mais leveza, mais você. Não é mágica — é trabalho. Mas vale cada sessão.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="sec sec-wine-light">
+  <div class="reveal">
+    <div class="sec-eyebrow">Especialidades</div>
+    <h2 class="sec-h2">Áreas de<br><em>atuação.</em></h2>
+  </div>
+  <div class="servicos reveal">
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Ansiedade e síndrome do pânico</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Depressão e tristeza persistente</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Burnout e esgotamento profissional</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Autoconhecimento e desenvolvimento pessoal</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Relacionamentos e vínculos afetivos</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Atendimento presencial em SJC e online</div></div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS CARROSSEL -->
+<section class="sec sec-dark" id="depoimentos">
+  <div class="reveal">
+    <div class="sec-eyebrow" style="color:rgba(255,255,255,0.25)">Pacientes</div>
+    <h2 class="sec-h2" style="color:var(--white)">O que dizem sobre<br><em style="color:var(--rose-light)">o trabalho.</em></h2>
+  </div>
+  <div class="carousel-wrap reveal">
+    <div class="carousel" id="carousel">
+      <div class="dep-slide">
+        <img src="https://escola.refugionastintas.art.br/7.png" alt="Avaliação Google">
+      </div>
+      <div class="dep-slide">
+        <img src="https://escola.refugionastintas.art.br/8.png" alt="Avaliação Google">
+      </div>
+      <div class="dep-slide">
+        <img src="https://escola.refugionastintas.art.br/9.png" alt="Avaliação Google">
+      </div>
+    </div>
+    <div class="carousel-dots">
+      <button class="dot active" onclick="goTo(0)"></button>
+      <button class="dot" onclick="goTo(1)"></button>
+      <button class="dot" onclick="goTo(2)"></button>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="prev()">←</button>
+      <button class="carousel-btn" onclick="next()">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="sec sec-dark" style="padding-top:0;border-top:1px solid rgba(255,255,255,0.04)">
+  <div class="reveal">
+    <div class="sec-eyebrow" style="color:rgba(255,255,255,0.25)">Instagram</div>
+    <h2 class="sec-h2" style="color:var(--white)">Conteúdo sobre<br><em style="color:var(--rose-light)">saúde mental.</em></h2>
+    <div style="margin-top:20px;text-align:center;" class="reveal">
+      <a href="https://www.instagram.com/tatianevieira.psi/" target="_blank"
+        style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:8px;text-decoration:none;color:white;font-weight:700;font-size:0.8rem;letter-spacing:0.05em;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);transition:all 0.3s;">
+        📸 @tatianevieira.psi · Seguir
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL -->
+<section class="sec sec-white" id="contato">
+  <div class="reveal">
+    <div class="sec-eyebrow">Localização</div>
+    <h2 class="sec-h2">Onde nos<br><em>encontrar.</em></h2>
+  </div>
+  <div class="local-items">
+    <div class="local-item reveal">
+      <div class="local-icon">📍</div>
+      <div><div class="local-lbl">Endereço</div><div class="local-val">R. Francisca Maria de Jesus, 347<br>Floradas de São José · São José dos Campos – SP</div></div>
+    </div>
+    <div class="local-item reveal">
+      <div class="local-icon">📱</div>
+      <div><div class="local-lbl">WhatsApp</div><div class="local-val">(12) 98851-3458</div></div>
+    </div>
+    <div class="local-item reveal">
+      <div class="local-icon">💻</div>
+      <div><div class="local-lbl">Atendimento Online</div><div class="local-val">Para todo o Brasil via teleconsulta</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-bg">
+  <div class="reveal">
+    <h2 class="cta-h">Chega de só<br>sobreviver.</h2>
+    <p class="cta-p">Você merece mais do que carregar tudo sozinha. Um passo de cada vez — e o primeiro pode ser hoje.</p>
+    <a href="https://wa.me/5512988513458" class="btn-cta">💬 Agendar minha sessão</a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot">Tatiane <span>Vieira</span></div>
+  <div class="foot-sub">Psicóloga · Floradas de São José · SJC – SP</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+let current = 0;
+const carousel = document.getElementById('carousel');
+const dots = document.querySelectorAll('.dot');
+const total = 3;
+
+function updateDots() {
+  dots.forEach((d,i) => d.classList.toggle('active', i === current));
+}
+function goTo(idx) {
+  current = idx;
+  const w = carousel.querySelector('.dep-slide').offsetWidth + 14;
+  carousel.scrollTo({ left: current * w, behavior:'smooth' });
+  updateDots();
+}
+function next() { goTo((current+1)%total); }
+function prev() { goTo((current-1+total)%total); }
+setInterval(() => next(), 5000);
+carousel.addEventListener('scroll', () => {
+  const w = carousel.querySelector('.dep-slide').offsetWidth + 14;
+  current = Math.round(carousel.scrollLeft / w);
+  updateDots();
+});
+</script>
+</body>
+</html>
