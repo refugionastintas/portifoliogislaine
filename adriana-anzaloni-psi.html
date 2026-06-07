@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adriana Anzaloni · Psicóloga em São José dos Campos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #f4f1ee;
+  --azul: #2c4a6e;
+  --azul-light: #e0e8f4;
+  --azul-pale: #f4f7fc;
+  --cobre: #c4854a;
+  --ink: #141c28;
+  --muted: #5a6070;
+  --white: #fff;
+  --border: #dde4ee;
+  --dark: #0e1520;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Outfit',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 24px; display:flex; justify-content:space-between; align-items:center;
+  background:rgba(244,241,238,0.97); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo { font-family:'Bodoni Moda',serif; font-size:1rem; color:var(--ink); letter-spacing:0.02em; }
+.nav-logo span { color:var(--azul); font-style:italic; }
+.nav-btn {
+  padding:10px 20px; background:var(--azul); color:var(--white);
+  font-size:0.7rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase;
+  text-decoration:none; border-radius:4px; transition:all 0.3s;
+}
+.nav-btn:hover { background:#1e3450; }
+
+/* HERO — fundo azul profundo, estilo clássico */
+.hero {
+  min-height:100vh; padding-top:56px;
+  background:var(--dark); position:relative; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(44,74,110,0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(196,133,74,0.15) 0%, transparent 45%);
+}
+
+/* Linhas geométricas decorativas */
+.hero-deco {
+  position:absolute; top:15%; right:8%;
+  width:140px; height:140px;
+  border:1px solid rgba(44,74,110,0.3);
+  border-radius:50%;
+}
+.hero-deco2 {
+  position:absolute; top:20%; right:13%;
+  width:80px; height:80px;
+  border:1px solid rgba(196,133,74,0.2);
+  border-radius:50%;
+}
+
+.hero-foto {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center top; opacity:0.2;
+}
+
+.hero-content {
+  position:relative; z-index:2; padding:48px 24px 52px;
+  animation:up 0.9s ease both;
+}
+@keyframes up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+
+.hero-tag {
+  display:inline-block; font-size:0.58rem; font-weight:500; letter-spacing:0.25em;
+  text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:20px;
+  padding-bottom:10px; border-bottom:1px solid rgba(196,133,74,0.3);
+}
+
+.hero-h1 {
+  font-family:'Bodoni Moda',serif; font-size:clamp(2.2rem,8vw,3.6rem);
+  font-weight:400; line-height:1.1; color:var(--white); margin-bottom:18px;
+}
+.hero-h1 em { font-style:italic; color:#a8c0e0; }
+
+.hero-p {
+  font-size:0.86rem; font-weight:300; color:rgba(255,255,255,0.45);
+  line-height:1.8; margin-bottom:32px; max-width:400px;
+}
+
+.hero-stars {
+  display:flex; align-items:center; gap:8px; margin-bottom:28px;
+}
+.stars { color:#f5c842; font-size:0.9rem; letter-spacing:2px; }
+.stars-txt { font-size:0.68rem; color:rgba(255,255,255,0.35); }
+
+.hero-btns { display:flex; flex-direction:column; gap:10px; }
+.btn-w {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:15px; background:#25d366; color:var(--white);
+  font-size:0.78rem; font-weight:600; text-decoration:none;
+  border-radius:6px; transition:all 0.3s; text-transform:uppercase; letter-spacing:0.06em;
+}
+.btn-w:hover { background:#1eb858; }
+.btn-ghost {
+  display:block; text-align:center; padding:14px;
+  border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.35);
+  font-size:0.75rem; text-decoration:none; border-radius:6px; transition:all 0.3s;
+}
+.btn-ghost:hover { border-color:var(--cobre); color:#d4a882; }
+
+/* SECTIONS */
+.sec { padding:52px 24px; }
+.sec-white { background:var(--white); }
+.sec-azul { background:var(--azul-pale); }
+.sec-dark { background:var(--dark); }
+
+.sec-label {
+  font-size:0.58rem; font-weight:600; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--azul); margin-bottom:12px; display:flex; align-items:center; gap:10px;
+}
+.sec-label::after { content:''; flex:1; height:1px; background:rgba(44,74,110,0.15); }
+
+.sec-h2 {
+  font-family:'Bodoni Moda',serif; font-size:clamp(1.6rem,5vw,2.2rem);
+  font-weight:400; line-height:1.2; margin-bottom:16px;
+}
+.sec-h2 em { font-style:italic; color:var(--azul); }
+.sec-p { font-size:0.86rem; line-height:1.9; color:var(--muted); font-weight:300; }
+.sec-p strong { color:var(--ink); font-weight:600; }
+
+/* SERVIÇOS */
+.servicos { display:flex; flex-direction:column; gap:1px; margin-top:24px; background:var(--border); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+.servico {
+  display:flex; align-items:center; gap:14px;
+  background:var(--white); padding:15px 18px; transition:all 0.2s;
+}
+.servico:hover { background:var(--azul-pale); }
+.servico-check {
+  width:22px; height:22px; border-radius:4px;
+  background:var(--azul-light); color:var(--azul);
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.65rem; flex-shrink:0; font-weight:700;
+}
+.servico-nome { font-size:0.84rem; font-weight:500; }
+
+/* CARROSSEL */
+.carousel-wrap { position:relative; margin-top:28px; }
+.carousel {
+  display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory;
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.carousel::-webkit-scrollbar { display:none; }
+.dep-slide {
+  min-width:calc(100% - 48px); scroll-snap-align:start;
+  border-radius:12px; overflow:hidden; flex-shrink:0;
+  border:1px solid rgba(255,255,255,0.06);
+}
+.dep-slide img { width:100%; display:block; }
+
+.carousel-dots { display:flex; justify-content:center; gap:6px; margin-top:16px; }
+.dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:all 0.3s; border:none; padding:0; }
+.dot.active { background:var(--cobre); width:18px; border-radius:3px; }
+.carousel-nav { display:flex; justify-content:center; gap:10px; margin-top:14px; }
+.carousel-btn {
+  width:36px; height:36px; border-radius:50%;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(44,74,110,0.2);
+  color:rgba(255,255,255,0.5); font-size:1rem; cursor:pointer; transition:all 0.2s;
+  display:flex; align-items:center; justify-content:center;
+}
+.carousel-btn:hover { background:var(--azul); color:white; border-color:var(--azul); }
+
+/* LOCAL */
+.local-items { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.local-item {
+  display:flex; gap:14px; background:var(--white);
+  border:1px solid var(--border); border-radius:10px; padding:16px;
+}
+.local-icon { font-size:1.1rem; flex-shrink:0; }
+.local-lbl { font-size:0.58rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--azul); margin-bottom:3px; }
+.local-val { font-size:0.8rem; color:var(--ink); line-height:1.5; }
+
+/* CTA */
+.cta-bg {
+  background:linear-gradient(135deg, var(--azul) 0%, #1a2e4a 100%);
+  padding:56px 24px; text-align:center; position:relative; overflow:hidden;
+}
+.cta-bg::before {
+  content:''; position:absolute; top:-80px; right:-80px;
+  width:250px; height:250px; border-radius:50%; background:rgba(255,255,255,0.03);
+}
+.cta-h {
+  font-family:'Bodoni Moda',serif; font-size:clamp(1.8rem,6vw,2.6rem);
+  font-weight:400; font-style:italic; color:var(--white); line-height:1.1; margin-bottom:12px;
+  position:relative; z-index:1;
+}
+.cta-p { font-size:0.84rem; color:rgba(255,255,255,0.5); margin-bottom:28px; line-height:1.7; position:relative; z-index:1; }
+.btn-cta {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 28px; background:var(--white); color:var(--azul);
+  font-weight:700; font-size:0.8rem; text-decoration:none;
+  border-radius:6px; transition:all 0.3s; position:relative; z-index:1;
+  text-transform:uppercase; letter-spacing:0.06em;
+}
+.btn-cta:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.2); }
+
+footer { background:#080d14; padding:24px; text-align:center; }
+.foot { font-family:'Bodoni Moda',serif; font-size:0.9rem; font-style:italic; color:rgba(255,255,255,0.25); margin-bottom:4px; }
+.foot span { color:#a8c0e0; }
+.foot-sub { font-size:0.55rem; color:rgba(255,255,255,0.12); letter-spacing:0.1em; text-transform:uppercase; }
+
+.reveal { opacity:0; transform:translateY(20px); transition:all 0.65s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Adriana <span>Anzaloni</span></div>
+  <a href="https://wa.me/5512981176502" class="nav-btn">Agendar sessão</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-deco2"></div>
+  <img class="hero-foto"
+    src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80&fit=crop&crop=face,top"
+    alt="Psicóloga Adriana Anzaloni">
+  <div class="hero-content">
+    <div class="hero-tag">Psicóloga Clínica · São José dos Campos</div>
+    <h1 class="hero-h1">Sua história<br>merece ser <em>ouvida.</em></h1>
+    <p class="hero-p">Atendimento clínico humanizado para quem busca autoconhecimento, equilíbrio emocional e uma vida com mais sentido.</p>
+    <div class="hero-stars">
+      <div class="stars">★★★★★</div>
+      <div class="stars-txt">Avaliações no Google</div>
+    </div>
+    <div class="hero-btns">
+      <a href="https://wa.me/5512981176502" class="btn-w">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agendar minha sessão
+      </a>
+      <a href="#sobre" class="btn-ghost">Conhecer o trabalho ↓</a>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section class="sec sec-white" id="sobre">
+  <div class="reveal">
+    <div class="sec-label">Sobre</div>
+    <h2 class="sec-h2">Psicologia que<br><em>transforma vidas.</em></h2>
+    <p class="sec-p">Sou a <strong>Adriana Anzaloni</strong>, psicóloga clínica em São José dos Campos. Trabalho com um olhar atento e cuidadoso para cada pessoa que chega até mim, entendendo que cada história é única e merece um acompanhamento individualizado.</p>
+    <p class="sec-p" style="margin-top:12px;">Meu objetivo é criar um espaço de <strong>escuta genuína, acolhimento e transformação</strong> — onde você possa se expressar livremente e trabalhar o que precisa ser trabalhado.</p>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="sec sec-azul">
+  <div class="reveal">
+    <div class="sec-label">Especialidades</div>
+    <h2 class="sec-h2">Áreas de<br><em>atuação.</em></h2>
+  </div>
+  <div class="servicos reveal">
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Ansiedade e transtornos de humor</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Depressão e tristeza persistente</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Autoconhecimento e desenvolvimento pessoal</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Relacionamentos e vínculos afetivos</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Burnout e esgotamento profissional</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Atendimento presencial em SJC e online</div></div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="sec sec-dark" id="depoimentos">
+  <div class="reveal">
+    <div class="sec-label" style="color:rgba(255,255,255,0.25)">Pacientes</div>
+    <h2 class="sec-h2" style="color:var(--white)">O que dizem sobre<br><em style="color:#a8c0e0">o trabalho.</em></h2>
+  </div>
+  <div class="carousel-wrap reveal">
+    <div class="carousel" id="carousel">
+      <div class="dep-slide"><img src="https://escola.refugionastintas.art.br/13.png" alt="Avaliação Google"></div>
+      <div class="dep-slide"><img src="https://escola.refugionastintas.art.br/14.png" alt="Avaliação Google"></div>
+      <div class="dep-slide"><img src="https://escola.refugionastintas.art.br/15.png" alt="Avaliação Google"></div>
+    </div>
+    <div class="carousel-dots">
+      <button class="dot active" onclick="goTo(0)"></button>
+      <button class="dot" onclick="goTo(1)"></button>
+      <button class="dot" onclick="goTo(2)"></button>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="prev()">←</button>
+      <button class="carousel-btn" onclick="next()">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL -->
+<section class="sec sec-white" id="contato">
+  <div class="reveal">
+    <div class="sec-label">Localização</div>
+    <h2 class="sec-h2">Onde nos<br><em>encontrar.</em></h2>
+  </div>
+  <div class="local-items">
+    <div class="local-item reveal">
+      <div class="local-icon">📍</div>
+      <div><div class="local-lbl">Endereço</div><div class="local-val">Av. Nove de Julho, 1119<br>Jardim Apolo · São José dos Campos – SP</div></div>
+    </div>
+    <div class="local-item reveal">
+      <div class="local-icon">📱</div>
+      <div><div class="local-lbl">WhatsApp</div><div class="local-val">(12) 98117-6502</div></div>
+    </div>
+    <div class="local-item reveal">
+      <div class="local-icon">💻</div>
+      <div><div class="local-lbl">Atendimento Online</div><div class="local-val">Para todo o Brasil via teleconsulta</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-bg">
+  <div class="reveal">
+    <h2 class="cta-h">Sua história<br>merece atenção.</h2>
+    <p class="cta-p">Dê o primeiro passo. Agende sua sessão e comece a cuidar da sua saúde mental com quem realmente escuta.</p>
+    <a href="https://wa.me/5512981176502" class="btn-cta">💬 Agendar minha sessão</a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot">Adriana <span>Anzaloni</span></div>
+  <div class="foot-sub">Psicóloga Clínica · Jardim Apolo · SJC – SP</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+let current = 0;
+const carousel = document.getElementById('carousel');
+const dots = document.querySelectorAll('.dot');
+const total = 3;
+
+function updateDots() { dots.forEach((d,i) => d.classList.toggle('active', i === current)); }
+function goTo(idx) {
+  current = idx;
+  const w = carousel.querySelector('.dep-slide').offsetWidth + 14;
+  carousel.scrollTo({ left: current * w, behavior:'smooth' });
+  updateDots();
+}
+function next() { goTo((current+1)%total); }
+function prev() { goTo((current-1+total)%total); }
+setInterval(() => next(), 5000);
+carousel.addEventListener('scroll', () => {
+  const w = carousel.querySelector('.dep-slide').offsetWidth + 14;
+  current = Math.round(carousel.scrollLeft / w);
+  updateDots();
+});
+</script>
+</body>
+</html>
