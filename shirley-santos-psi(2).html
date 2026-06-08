@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shirley Santos · Psicóloga Clínica em São José dos Campos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #fdfaf7;
+  --terra: #8b5e3c;
+  --terra-light: #f2e8de;
+  --terra-pale: #fdf9f5;
+  --verde: #3a6b4a;
+  --verde-light: #e0ede4;
+  --ink: #1a1208;
+  --muted: #6b5e52;
+  --white: #fff;
+  --border: #e8ddd4;
+  --dark: #140c04;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Nunito',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 24px; display:flex; justify-content:space-between; align-items:center;
+  background:rgba(253,250,247,0.97); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo { font-family:'Playfair Display',serif; font-size:1rem; color:var(--ink); }
+.nav-logo span { color:var(--terra); font-style:italic; }
+.nav-btn {
+  padding:10px 20px; background:var(--terra); color:var(--white);
+  font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+  text-decoration:none; border-radius:50px; transition:all 0.3s;
+}
+.nav-btn:hover { background:#7a4e2c; }
+
+.hero {
+  min-height:100vh; padding-top:56px;
+  background:var(--dark); position:relative; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(139,94,60,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 80%, rgba(58,107,74,0.15) 0%, transparent 45%);
+}
+.hero-foto {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center top; opacity:0.25;
+}
+.hero-content {
+  position:relative; z-index:2; padding:48px 24px 52px;
+  animation:up 0.9s ease both;
+}
+@keyframes up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+
+.hero-chip {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(139,94,60,0.2); border:1px solid rgba(139,94,60,0.35);
+  color:#d4a882; font-size:0.6rem; font-weight:600; letter-spacing:0.2em;
+  text-transform:uppercase; padding:5px 14px; border-radius:50px;
+  margin-bottom:22px; width:fit-content;
+}
+.hero-h1 {
+  font-family:'Playfair Display',serif; font-size:clamp(2.2rem,8vw,3.4rem);
+  font-weight:400; line-height:1.1; color:var(--white); margin-bottom:16px;
+}
+.hero-h1 em { font-style:italic; color:#d4a882; display:block; }
+.hero-p { font-size:0.86rem; font-weight:300; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:28px; }
+.hero-rating { display:flex; align-items:center; gap:10px; margin-bottom:28px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:12px 16px; }
+.stars { color:#f5c842; font-size:0.9rem; letter-spacing:2px; }
+.stars-txt { font-size:0.7rem; color:rgba(255,255,255,0.4); }
+
+.hero-btns { display:flex; flex-direction:column; gap:10px; }
+.btn-w {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:15px; background:#25d366; color:var(--white);
+  font-size:0.78rem; font-weight:700; text-decoration:none;
+  border-radius:10px; transition:all 0.3s; text-transform:uppercase; letter-spacing:0.06em;
+}
+.btn-ghost { display:block; text-align:center; padding:14px; border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.4); font-size:0.75rem; text-decoration:none; border-radius:10px; }
+
+.sec { padding:52px 24px; }
+.sec-white { background:var(--white); }
+.sec-terra { background:var(--terra-pale); }
+.sec-verde { background:var(--verde-light); }
+.sec-dark { background:var(--dark); }
+
+.sec-eyebrow { font-size:0.58rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--terra); margin-bottom:12px; display:flex; align-items:center; gap:10px; }
+.sec-eyebrow::after { content:''; flex:1; height:1px; background:rgba(139,94,60,0.2); }
+.sec-h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,5vw,2.2rem); font-weight:400; line-height:1.2; margin-bottom:16px; }
+.sec-h2 em { font-style:italic; color:var(--terra); }
+.sec-p { font-size:0.86rem; line-height:1.9; color:var(--muted); font-weight:300; }
+.sec-p + .sec-p { margin-top:12px; }
+.sec-p strong { color:var(--ink); font-weight:600; }
+
+.carta { background:var(--white); border-radius:14px; padding:24px; border-left:3px solid var(--terra); margin-top:24px; }
+.carta-txt { font-family:'Playfair Display',serif; font-style:italic; font-size:0.95rem; line-height:1.8; color:var(--ink); margin-bottom:12px; }
+.carta-ass { font-size:0.7rem; color:var(--muted); }
+.carta-ass strong { color:var(--terra); font-family:'Nunito',sans-serif; font-style:normal; }
+
+.bullets { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.bullet { display:flex; align-items:flex-start; gap:12px; background:var(--white); border:1px solid var(--border); border-radius:12px; padding:14px 16px; transition:all 0.2s; }
+.bullet:hover { border-color:var(--terra); }
+.bullet-icon { font-size:1.1rem; flex-shrink:0; }
+.bullet-txt { font-size:0.82rem; color:var(--ink); line-height:1.5; }
+.bullet-txt strong { color:var(--terra); }
+
+.etapas { display:flex; flex-direction:column; gap:0; margin-top:24px; }
+.etapa { display:flex; gap:16px; padding-bottom:24px; }
+.etapa:last-child { padding-bottom:0; }
+.etapa-esq { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+.etapa-num { width:38px; height:38px; border-radius:50%; background:var(--terra); color:var(--white); font-family:'Playfair Display',serif; font-size:1rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.etapa-linha { width:1px; flex:1; background:var(--border); margin:6px 0; min-height:20px; }
+.etapa-corpo { padding-top:8px; }
+.etapa-titulo { font-size:0.88rem; font-weight:600; color:var(--ink); margin-bottom:5px; }
+.etapa-desc { font-size:0.78rem; color:var(--muted); line-height:1.7; }
+
+.servicos { display:flex; flex-direction:column; gap:1px; margin-top:24px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.servico { display:flex; align-items:center; gap:14px; background:var(--white); padding:15px 18px; transition:all 0.2s; }
+.servico:hover { background:var(--terra-pale); }
+.servico-check { width:22px; height:22px; border-radius:50%; background:var(--terra-light); color:var(--terra); display:flex; align-items:center; justify-content:center; font-size:0.65rem; flex-shrink:0; font-weight:700; }
+.servico-nome { font-size:0.84rem; font-weight:500; }
+
+.carousel-wrap { position:relative; margin-top:28px; }
+.carousel { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none; }
+.carousel::-webkit-scrollbar { display:none; }
+.dep-slide { min-width:calc(100% - 48px); scroll-snap-align:start; border-radius:14px; overflow:hidden; flex-shrink:0; border:1px solid rgba(255,255,255,0.07); }
+.dep-slide img { width:100%; display:block; }
+.carousel-dots { display:flex; justify-content:center; gap:6px; margin-top:16px; }
+.dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:all 0.3s; border:none; padding:0; }
+.dot.active { background:var(--terra); width:18px; border-radius:3px; }
+.carousel-nav { display:flex; justify-content:center; gap:10px; margin-top:14px; }
+.carousel-btn { width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.06); border:1px solid rgba(139,94,60,0.2); color:rgba(255,255,255,0.5); font-size:1rem; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; }
+.carousel-btn:hover { background:var(--terra); color:white; }
+
+.local-items { display:flex; flex-direction:column; gap:10px; margin-top:24px; }
+.local-item { display:flex; gap:14px; background:var(--white); border:1px solid var(--border); border-radius:12px; padding:16px; }
+.local-icon { font-size:1.1rem; flex-shrink:0; }
+.local-lbl { font-size:0.58rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--terra); margin-bottom:3px; }
+.local-val { font-size:0.8rem; color:var(--ink); line-height:1.5; }
+
+.cta-bg { background:linear-gradient(135deg, var(--terra) 0%, #6a3e1c 100%); padding:56px 24px; text-align:center; position:relative; overflow:hidden; }
+.cta-h { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,6vw,2.6rem); font-weight:400; font-style:italic; color:var(--white); line-height:1.1; margin-bottom:12px; }
+.cta-p { font-size:0.84rem; color:rgba(255,255,255,0.6); margin-bottom:28px; line-height:1.7; }
+.btn-cta { display:inline-flex; align-items:center; gap:10px; padding:16px 28px; background:var(--white); color:var(--terra); font-weight:700; font-size:0.8rem; text-decoration:none; border-radius:50px; transition:all 0.3s; text-transform:uppercase; letter-spacing:0.06em; }
+.btn-cta:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.2); }
+
+footer { background:#0d0805; padding:24px; text-align:center; }
+.foot { font-family:'Playfair Display',serif; font-size:0.9rem; font-style:italic; color:rgba(255,255,255,0.25); margin-bottom:4px; }
+.foot span { color:#d4a882; }
+.foot-sub { font-size:0.55rem; color:rgba(255,255,255,0.12); letter-spacing:0.1em; text-transform:uppercase; }
+
+.reveal { opacity:0; transform:translateY(20px); transition:all 0.65s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Shirley <span>Santos</span></div>
+  <a href="https://wa.me/5512992602652" class="nav-btn">Agendar sessão</a>
+</nav>
+
+<div class="hero">
+  <img class="hero-foto" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80&fit=crop&crop=face,top" alt="Psicóloga Shirley Santos">
+  <div class="hero-content">
+    <div class="hero-chip">🌿 Psicóloga Clínica · São José dos Campos</div>
+    <h1 class="hero-h1">Você não precisa<br>carregar tudo<br><em>sozinha.</em></h1>
+    <p class="hero-p">Um espaço seguro, acolhedor e sem julgamentos para você se reconectar com seus sentimentos e encontrar equilíbrio emocional.</p>
+    <div class="hero-rating">
+      <div class="stars">★★★★★</div>
+      <div class="stars-txt">Avaliações 5 estrelas no Google</div>
+    </div>
+    <div class="hero-btns">
+      <a href="https://wa.me/5512992602652" class="btn-w">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agendar minha sessão
+      </a>
+      <a href="#sobre" class="btn-ghost">Conhecer o trabalho ↓</a>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section class="sec sec-white" id="sobre">
+  <div class="reveal">
+    <div class="sec-eyebrow">Sobre</div>
+    <h2 class="sec-h2">Cuidar da mente<br><em>é um ato de coragem.</em></h2>
+    <p class="sec-p">Sou a <strong>Shirley Santos</strong>, psicóloga clínica em São José dos Campos. Ofereço um espaço seguro e acolhedor para você se reconectar com seus sentimentos, trabalhar suas dificuldades e construir uma vida com mais equilíbrio e leveza.</p>
+    <p class="sec-p">Acredito que cada pessoa tem seu próprio ritmo — e meu papel é <strong>caminhar junto com você nesse processo</strong>, sem julgamentos e com total respeito à sua história.</p>
+  </div>
+  <div class="carta reveal">
+    <div class="carta-txt">"Buscar ajuda é um dos atos mais corajosos que alguém pode fazer. Não é fraqueza — é a decisão de que você merece mais."</div>
+    <div class="carta-ass">— <strong>Shirley Santos</strong>, Psicóloga</div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="sec sec-terra">
+  <div class="reveal">
+    <div class="sec-eyebrow">Para quem é</div>
+    <h2 class="sec-h2">Você se identifica<br><em>com algum desses?</em></h2>
+  </div>
+  <div class="bullets">
+    <div class="bullet reveal"><div class="bullet-icon">😰</div><div class="bullet-txt"><strong>Ansiedade</strong> que não te deixa viver o presente com tranquilidade</div></div>
+    <div class="bullet reveal"><div class="bullet-icon">😔</div><div class="bullet-txt"><strong>Tristeza persistente</strong> que você não consegue explicar nem superar sozinha</div></div>
+    <div class="bullet reveal"><div class="bullet-icon">🔄</div><div class="bullet-txt"><strong>Padrões que se repetem</strong> nos relacionamentos e nas escolhas da sua vida</div></div>
+    <div class="bullet reveal"><div class="bullet-icon">💼</div><div class="bullet-txt"><strong>Esgotamento</strong> — sensação de que não aguenta mais mas não pode parar</div></div>
+    <div class="bullet reveal"><div class="bullet-icon">🌱</div><div class="bullet-txt"><strong>Vontade de se conhecer</strong> melhor e construir uma vida com mais sentido</div></div>
+  </div>
+  <div class="reveal" style="margin-top:24px;">
+    <a href="https://wa.me/5512992602652" class="btn-w" style="background:var(--terra);">Me identifico. Quero começar →</a>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="sec sec-white">
+  <div class="reveal">
+    <div class="sec-eyebrow">Como funciona</div>
+    <h2 class="sec-h2">Do primeiro contato<br><em>à transformação.</em></h2>
+  </div>
+  <div class="etapas reveal">
+    <div class="etapa">
+      <div class="etapa-esq"><div class="etapa-num">1</div><div class="etapa-linha"></div></div>
+      <div class="etapa-corpo">
+        <div class="etapa-titulo">Primeiro contato — sem compromisso</div>
+        <div class="etapa-desc">Manda uma mensagem no WhatsApp. A gente conversa brevemente e marca a primeira sessão.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-esq"><div class="etapa-num">2</div><div class="etapa-linha"></div></div>
+      <div class="etapa-corpo">
+        <div class="etapa-titulo">Primeira sessão — só ouvir</div>
+        <div class="etapa-desc">Sem julgamento, sem pressa. É o espaço pra você falar — e pra mim escutar de verdade.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-esq"><div class="etapa-num">3</div><div class="etapa-linha"></div></div>
+      <div class="etapa-corpo">
+        <div class="etapa-titulo">Acompanhamento — no seu ritmo</div>
+        <div class="etapa-desc">Sessões semanais, respeitando seu tempo e seu processo. Cada pessoa é única.</div>
+      </div>
+    </div>
+    <div class="etapa">
+      <div class="etapa-esq"><div class="etapa-num">4</div></div>
+      <div class="etapa-corpo">
+        <div class="etapa-titulo">Transformação — que você sente no dia a dia</div>
+        <div class="etapa-desc">Mais clareza, mais leveza, mais segurança pra enfrentar o que a vida traz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="sec sec-verde">
+  <div class="reveal">
+    <div class="sec-eyebrow">Especialidades</div>
+    <h2 class="sec-h2">Áreas de<br><em>atuação.</em></h2>
+  </div>
+  <div class="servicos reveal">
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Ansiedade e estresse</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Depressão e tristeza persistente</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Autoconhecimento e desenvolvimento pessoal</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Relacionamentos e vínculos afetivos</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Burnout e esgotamento emocional</div></div>
+    <div class="servico"><div class="servico-check">✓</div><div class="servico-nome">Atendimento presencial em SJC e online</div></div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="sec sec-dark" id="depoimentos">
+  <div class="reveal">
+    <div class="sec-eyebrow" style="color:rgba(255,255,255,0.25)">Pacientes</div>
+    <h2 class="sec-h2" style="color:var(--white)">O que dizem sobre<br><em style="color:#d4a882">o trabalho.</em></h2>
+  </div>
+  <div class="carousel-wrap reveal">
+    <div class="carousel" id="carousel">
+      <div class="dep-slide"><img src="https://escola.refugionastintas.art.br/10.png" alt="Avaliação Google"></div>
+      <div class="dep-slide"><img src="https://escola.refugionastintas.art.br/11.png" alt="Avaliação Google"></div>
+      <div class="dep-slide"><img src="https://escola.refugionastintas.art.br/12.png" alt="Avaliação Google"></div>
+    </div>
+    <div class="carousel-dots">
+      <button class="dot active" onclick="goTo(0)"></button>
+      <button class="dot" onclick="goTo(1)"></button>
+      <button class="dot" onclick="goTo(2)"></button>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="prev()">←</button>
+      <button class="carousel-btn" onclick="next()">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL -->
+<section class="sec sec-white" id="contato">
+  <div class="reveal">
+    <div class="sec-eyebrow">Localização</div>
+    <h2 class="sec-h2">Onde nos<br><em>encontrar.</em></h2>
+  </div>
+  <div class="local-items">
+    <div class="local-item reveal">
+      <div class="local-icon">📍</div>
+      <div><div class="local-lbl">Endereço</div><div class="local-val">R. Professor Duílio Panziera<br>Altos do Esplanada · São José dos Campos – SP</div></div>
+    </div>
+    <div class="local-item reveal">
+      <div class="local-icon">📱</div>
+      <div><div class="local-lbl">WhatsApp</div><div class="local-val">(12) 99260-2652</div></div>
+    </div>
+    <div class="local-item reveal">
+      <div class="local-icon">💻</div>
+      <div><div class="local-lbl">Atendimento Online</div><div class="local-val">Para todo o Brasil via teleconsulta</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-bg">
+  <div class="reveal">
+    <h2 class="cta-h">Você merece se<br>sentir bem.</h2>
+    <p class="cta-p">O primeiro passo pode ser o mais difícil — mas você não precisa dar sozinha. Estou aqui pra caminhar junto com você.</p>
+    <a href="https://wa.me/5512992602652" class="btn-cta">💬 Agendar minha sessão</a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot">Shirley <span>Santos</span></div>
+  <div class="foot-sub">Psicóloga Clínica · Altos do Esplanada · SJC – SP</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+let current = 0;
+const carousel = document.getElementById('carousel');
+const dots = document.querySelectorAll('.dot');
+const total = 3;
+function updateDots() { dots.forEach((d,i) => d.classList.toggle('active', i === current)); }
+function goTo(idx) { current = idx; const w = carousel.querySelector('.dep-slide').offsetWidth + 14; carousel.scrollTo({ left: current * w, behavior:'smooth' }); updateDots(); }
+function next() { goTo((current+1)%total); }
+function prev() { goTo((current-1+total)%total); }
+setInterval(() => next(), 5000);
+carousel.addEventListener('scroll', () => { const w = carousel.querySelector('.dep-slide').offsetWidth + 14; current = Math.round(carousel.scrollLeft / w); updateDots(); });
+</script>
+</body>
+</html>
